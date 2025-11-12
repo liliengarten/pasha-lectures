@@ -1,7 +1,9 @@
 const BASE_URL = 'http://localhost:8080/';
 
-export const api = (url, options = {}) => {
-    return fetch(`${BASE_URL}${url}`, {
+export const api = async (url, options = {}) => {
+
+
+    const response = await fetch(`${BASE_URL}${url}`, {
         ...options,
         headers: {
             'Accept': 'application/json',
@@ -10,6 +12,8 @@ export const api = (url, options = {}) => {
             ...options.headers
         },
     })
+
+    return await response.json()
 }
 
-api('products', g{ method: 'POST', body: { } })
+api('products', { method: 'POST', body: { } })
